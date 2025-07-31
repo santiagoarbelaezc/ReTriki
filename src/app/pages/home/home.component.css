@@ -37,26 +37,35 @@ body {
   font-weight: bold;
   color: #ffffff;
   letter-spacing: 1px;
+  text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
+  animation: neonGlow 2s infinite alternate;
 }
 
 .subtitle {
   font-size: 1.2rem;
   color: #cccccc;
   margin-top: 6px;
+  text-shadow: 0 0 5px #7c42ff;
 }
 
 .mode-container {
-  background: linear-gradient(to bottom, #2c005f, #7c42ff, #d3cfff);
+  background: linear-gradient(to bottom, #3f097c, #b246d3, #e9e2f8);
   width: 100%;
-  padding: 10px 0px 50px; /* antes: 60px 20px 120px */
+  padding: 10px 0px 50px;
   text-align: center;
   position: relative;
+  border-bottom: 1px solid #7c42ff;
+  box-shadow: 0 0 20px rgba(124, 66, 255, 0.3);
 }
+
+
 
 .mode-container h2 {
   font-size: 1.8rem;
   margin-bottom: 80px;
   font-weight: bold;
+  text-shadow: 0 0 8px #7c42ff;
+  animation: neonPulse 3s infinite;
 }
 
 /* BOTÓN CIRCULAR CENTRADO */
@@ -71,30 +80,53 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 6px solid black;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  border: 6px solid #7c42ff;
+  box-shadow: 0 0 25px #7c42ff, 0 6px 20px rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: -95px;
   left: 50%;
   transform: translateX(-50%);
   line-height: 1.3;
   text-align: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.logo-btn:hover {
+  box-shadow: 0 0 35px #7c42ff, 0 8px 25px rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%) scale(1.05);
 }
 
 /* CONTENEDOR DE OPCIONES JUGADOR / JUGADORES */
 .players-box {
-  background-color: #14142b;
+  background-color: rgba(20, 20, 43, 0.8);
   margin-top: 40px;
   padding: 40px 20px;
   border-radius: 25px;
   display: flex;
-  justify-content: space-evenly; /* distribución uniforme */
+  justify-content: space-evenly;
   align-items: center;
-  gap: 30px;
+  gap: 120px;
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(124, 66, 255, 0.2);
+  border: 1px solid rgba(124, 66, 255, 0.3);
+  backdrop-filter: blur(5px);
 }
+
+
+
+.players-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(157, 116, 255, 0.2), transparent);
+  animation: scanningLight 3s infinite linear;
+}
+
 
 .mode {
   display: flex;
@@ -102,18 +134,34 @@ body {
   align-items: center;
   cursor: pointer;
   text-align: center;
-  width: 120px; /* fija un ancho para uniformidad */
+  width: 120px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mode:hover {
+  transform: translateY(-5px);
+}
+
+.mode:hover img {
+  filter: drop-shadow(0 0 10px #7c42ff);
+}
+
+.mode:hover span {
+  text-shadow: 0 0 8px #7c42ff;
 }
 
 .mode img {
   width: 75px;
   height: 75px;
   margin-bottom: 14px;
+  transition: all 0.3s ease;
 }
 
 .mode span {
   font-size: 1.1rem;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 /* FOOTER */
@@ -122,6 +170,7 @@ body {
   font-size: 0.85rem;
   text-align: center;
   margin-top: 30px;
+  text-shadow: 0 0 5px rgba(124, 66, 255, 0.5);
 }
 
 /* BOTÓN INFERIOR FIJO */
@@ -130,23 +179,116 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #e5e5e5;
+  background-color: rgba(229, 229, 229, 0.9);
   color: #000;
   padding: 18px 32px;
   border-radius: 30px;
   font-weight: bold;
   font-size: 1.2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(124, 66, 255, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   cursor: pointer;
   width: 90%;
   max-width: 380px;
+  transition: all 0.3s ease;
+  border: 1px solid #7c42ff;
+}
+
+.bottom-btn:hover {
+  box-shadow: 0 0 30px rgba(124, 66, 255, 0.8), 0 7px 20px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%) scale(1.02);
 }
 
 .bottom-btn span {
   color: #7c42ff;
   margin-right: 10px;
   font-weight: bold;
+  text-shadow: 0 0 5px rgba(124, 66, 255, 0.5);
+}
+
+/* EFECTOS ADICIONALES */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(124, 66, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
+/* Estilo para el texto INICIAR */
+.logo-btn .iniciar-text {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #7c42ff;
+  text-shadow: 0 0 10px rgba(124, 66, 255, 0.8);
+}
+
+/* Transición suave para el cambio */
+.logo-btn span {
+  transition: all 0.3s ease;
+}
+
+/* ANIMACIONES PERSONALIZADAS */
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
+  }
+  to {
+    text-shadow: 0 0 15px #7c42ff, 0 0 25px #7c42ff, 0 0 35px #7c42ff, 0 0 45px #7c42ff;
+  }
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 8px #7c42ff;
+  }
+  50% {
+    text-shadow: 0 0 15px #7c42ff, 0 0 20px #7c42ff;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #7c42ff, 0 0 20px rgba(124, 66, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px #7c42ff, 0 0 30px rgba(124, 66, 255, 0.8);
+  }
+}
+
+@keyframes scanningLight {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sweepIn {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
 
 /* RESPONSIVO */
@@ -160,11 +302,8 @@ body {
   }
 
   .mode-container {
-  
-  padding: 60px 0px 120px; /* antes: 60px 20px 120px */
-  text-align: center;
-  position: relative;
-}
+    padding: 60px 0px 120px;
+  }
 
   .mode-container h2 {
     font-size: 1.6rem;
@@ -176,10 +315,12 @@ body {
     font-size: 1.2rem;
   }
 
- .players-box {
+  .players-box {
+    margin-top: 60px;
     max-width: 600px;
-    gap: 60px; /* separación más generosa */
+    gap: 100px;
     padding: 50px 40px;
+    margin-bottom: 20px;
   }
 
   .mode img {
@@ -195,4 +336,129 @@ body {
     font-size: 1.1rem;
     padding: 16px 28px;
   }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomInFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes floatUpFade {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+@keyframes pulseIniciar {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.logo-btn .iniciar-text {
+  animation: pulseIniciar 0.5s ease-out;
+}
+
+
+
+/* Estilos para modo seleccionado */
+.mode.selected {
+  transform: translateY(-10px);
+}
+
+.mode.selected img {
+  filter: drop-shadow(0 0 15px #7c42ff) brightness(1.2);
+}
+
+.mode.selected span {
+  color: #7c42ff;
+  text-shadow: 0 0 15px #7c42ff;
+  font-weight: bold;
+}
+
+/* Efecto de selección */
+.mode.selected::after {
+  content: "✓";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  background: #7c42ff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(124, 66, 255, 0.8);
+  animation: pulseIniciar 0.5s ease-out;
+}
+
+@keyframes selectedPulse {
+  0%, 100% {
+    transform: translateY(-10px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+.mode.selected {
+  animation: selectedPulse 1.5s infinite;
 }
