@@ -1,0 +1,185 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d0d2b;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #0d0d2b;
+}
+
+.header-box {
+  text-align: center;
+  width: 100%;
+  padding: 20px 0 15px 0;
+  background-color: #070726;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 15px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
+  animation: neonGlow 2s infinite alternate;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #cccccc;
+  margin-top: 8px;
+  text-shadow: 0 0 5px #7c42ff;
+}
+
+.players-status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #070726;
+  padding: 10px;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+}
+
+.symbol {
+  font-size: 36px;
+}
+
+.player-name {
+  font-size: 0.9rem;
+}
+
+.vs-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffffaa;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
+  gap: 10px;
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  font-size: 40px;
+  border-radius: 12px;
+  border: 2px solid #7c42ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cell:hover {
+  background-color: rgba(124, 66, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.reset-btn {
+  width: 100%;
+  max-width: 300px;
+}
+
+.reset-btn button {
+  width: 100%;
+  background-color: #7c42ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 8px rgba(124, 66, 255, 0.3);
+}
+
+.reset-btn button:hover {
+  background-color: #6a35e0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(124, 66, 255, 0.4);
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 10px #7c42ff, 0 0 20px #7c42ff, 0 0 30px #7c42ff;
+  }
+  to {
+    text-shadow: 0 0 15px #7c42ff, 0 0 25px #7c42ff, 0 0 35px #7c42ff;
+  }
+}
+
+@media (max-width: 480px) {
+  .board {
+    grid-template-columns: repeat(3, 90px);
+    grid-template-rows: repeat(3, 90px);
+    gap: 8px;
+  }
+
+  .cell {
+    width: 90px;
+    height: 90px;
+    font-size: 32px;
+  }
+
+  .symbol {
+    font-size: 28px;
+  }
+
+  .vs-text {
+    font-size: 14px;
+  }
+
+  .player-name {
+    font-size: 0.75rem;
+  }
+
+  .reset-btn button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+.turn-message {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 20px 0;
+  color: white;
+}
